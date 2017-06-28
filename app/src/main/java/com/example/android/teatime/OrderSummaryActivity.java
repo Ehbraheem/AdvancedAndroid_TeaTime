@@ -109,6 +109,7 @@ public class OrderSummaryActivity extends AppCompatActivity {
                 getString(R.string.order_summary_email_subject));
         intent.putExtra(Intent.EXTRA_TEXT, emailMessage);
 
+
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
 
