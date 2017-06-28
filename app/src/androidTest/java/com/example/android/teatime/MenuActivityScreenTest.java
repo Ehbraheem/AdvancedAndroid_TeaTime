@@ -16,6 +16,16 @@
 
 package com.example.android.teatime;
 
+import android.support.test.rule.ActivityTestRule;
+import android.support.test.runner.AndroidJUnit4;
+import android.widget.GridView;
+
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
+import static android.support.test.espresso.matcher.ViewMatchers.withId;
+
 /**
  * This test demos a user clicking on a GridView item in MenuActivity which opens up the
  * corresponding OrderActivity.
@@ -25,17 +35,22 @@ package com.example.android.teatime;
  * takes into account Idling Resources.
  */
 
-
+@RunWith(AndroidJUnit4.class)
 // TODO (1) Add annotation to specify AndroidJUnitRunner class as the default test runner
 public class MenuActivityScreenTest {
 
     // TODO (2) Add the rule that provides functional testing of a single activity
+    @Rule
+    ActivityTestRule<MenuActivity> mActivityTestRule
+            = new ActivityTestRule<>(MenuActivity.class);
 
     // TODO (3) Finish writing this test which will click on a gridView Tea item and verify that
     // the OrderActivity opens up with the correct tea name displayed.
 
+    @Test
     public void clickGridViewItem_OpensOrderActivity() {
 
+        onData(GridView).inAdapterView(withId(R.id.tea_grid_view)).check();
     }
 
 }
