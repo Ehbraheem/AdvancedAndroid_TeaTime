@@ -24,7 +24,10 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static android.support.test.espresso.Espresso.onData;
+import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static org.hamcrest.Matchers.anything;
 
 /**
  * This test demos a user clicking on a GridView item in MenuActivity which opens up the
@@ -39,6 +42,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 // TODO (1) Add annotation to specify AndroidJUnitRunner class as the default test runner
 public class MenuActivityScreenTest {
 
+    private static final String TEA_NAME = "White Tea";
     // TODO (2) Add the rule that provides functional testing of a single activity
     @Rule
     ActivityTestRule<MenuActivity> mActivityTestRule
@@ -50,7 +54,10 @@ public class MenuActivityScreenTest {
     @Test
     public void clickGridViewItem_OpensOrderActivity() {
 
-        onData(GridView).inAdapterView(withId(R.id.tea_grid_view)).check();
+        onData(anything())
+                .inAdapterView(withId(R.id.tea_grid_view))
+                .atPosition(2).perform(click());
+        
     }
 
 }
